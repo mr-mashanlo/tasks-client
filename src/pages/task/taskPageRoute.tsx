@@ -1,5 +1,5 @@
 import { LoaderFunctionArgs, redirect, RouteObject } from 'react-router-dom';
-import { useAuthStore } from '@/features/auth/_store';
+import { useAuthStore } from '@/features/user/model';
 
 const taskPageLoader = ( args: LoaderFunctionArgs ) => {
   if ( !useAuthStore.getState().id ) { return redirect( '/' ); }
@@ -7,7 +7,7 @@ const taskPageLoader = ( args: LoaderFunctionArgs ) => {
 };
 
 export const taskPageRoute: RouteObject = {
-  path: 'task',
+  path: '/task',
   lazy: async () => {
     const { TaskPage } = await import( './taskPage' );
     return { Component: TaskPage };

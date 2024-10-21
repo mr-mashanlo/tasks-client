@@ -1,18 +1,19 @@
 import { FC } from 'react';
-import { CreateTaskForm } from '@/features/tasks/createTask';
-import { TaskListWidget } from '@/widgets/task/taskList';
-import { FilterTask } from '@/features/tasks/filterTask';
+import { HeaderWidget } from '@/widgets/user/ui';
+import { FilterWidget, TableWidget } from '@/widgets/task/ui';
 
 export const HomePage: FC = () => {
   return (
-    <div>
-      <section className="min-h-screen py-5 sm:py-10 flex flex-col">
-        <div className="container-block flex flex-col flex-grow">
-          <CreateTaskForm />
-          <div className="mt-5 sm:mt-10"><TaskListWidget /></div>
-          <FilterTask />
-        </div>
-      </section>
+    <div className="p-10">
+      <div>
+        <HeaderWidget title="Welcome back!" subtitle="Here's a list of your tasks for this month!" />
+      </div>
+      <div className="mt-8">
+        <FilterWidget />
+      </div>
+      <div className="mt-8">
+        <TableWidget />
+      </div>
     </div>
   );
 };
