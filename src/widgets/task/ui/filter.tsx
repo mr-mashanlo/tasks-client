@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { PriorityFilter, QueryInput, StatusFilter } from '@/features/task/ui';
+import { PriorityFilter, QueryFilter, StatusFilter } from '@/features/task/ui';
 
 const FilterWidget: FC = () => {
   return (
     <div className="flex items-center gap-3">
-      <QueryInput />
+      <QueryFilter />
       <StatusFilter />
       <PriorityFilter />
     </div>

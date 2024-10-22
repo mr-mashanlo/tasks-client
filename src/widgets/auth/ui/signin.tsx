@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { SignInForm } from '@/features/user/ui';
+import { SignInForm } from '@/features/auth/ui';
 
 const SignInWidget: FC = () => {
   return (

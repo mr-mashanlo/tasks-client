@@ -16,8 +16,19 @@ export const AuthResponseSchema = z.object( {
   token: z.string()
 } );
 
+export const ErrorResponseSchema = z.object( {
+  code: z.number(),
+  errors: z.array( z.object( { path: z.string(), msg: z.string() } ) )
+} );
+
+export const ErrorZodSchema = z.array( z.object( { validation: z.string(), message: z.string() } ) );
+
 export type SignInType = z.infer<typeof SignInSchema>;
 
 export type SignUpType = z.infer<typeof SignUpSchema>;
 
 export type AuthResponseType = z.infer<typeof AuthResponseSchema>;
+
+export type ErrorResponseType = z.infer<typeof ErrorResponseSchema>;
+
+export type ErrorZodType = z.infer<typeof ErrorZodSchema>;

@@ -1,5 +1,5 @@
 import { LoaderFunctionArgs, redirect, RouteObject } from 'react-router-dom';
-import { useAuthStore } from '@/features/user/model';
+import { useAuthStore } from '@/entities/auth/model';
 
 const taskPageLoader = ( args: LoaderFunctionArgs ) => {
   if ( !useAuthStore.getState().id ) { return redirect( '/' ); }

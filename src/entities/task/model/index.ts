@@ -1,13 +1,20 @@
-import { TaskType, TaskSchema, TaskResponseType, TaskResponseSchema, TaskListResponseType, TaskListResponseSchema } from './taskSchema';
+import {
+  TaskListResponseSchema,
+  TaskListResponseType,
+  TaskResponseSchema,
+  TaskResponseType,
+  TaskSchema,
+  TaskType
+} from './taskSchema';
 
 export {
-  TaskSchema,
+  TaskListResponseSchema,
   TaskResponseSchema,
-  TaskListResponseSchema
+  TaskSchema
 };
 
 export type {
-  TaskType,
+  TaskListResponseType,
   TaskResponseType,
-  TaskListResponseType
+  TaskType
 };

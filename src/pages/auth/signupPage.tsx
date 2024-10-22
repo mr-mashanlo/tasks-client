@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { SignUpWidget } from '@/widgets/user/ui';
+import { SignUpWidget } from '@/widgets/auth/ui';
 
 export const SignUpPage: FC = () => {
   return (

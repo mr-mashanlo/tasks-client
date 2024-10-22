@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useFilterStore } from '../model';
 import { Input } from '@/shared/ui';
 
-const QueryInput: FC = () => {
+const QueryFilter: FC = () => {
 
   const query = useFilterStore( state => state.query );
   const setQuery = useFilterStore( state => state.setQuery );
@@ -14,4 +14,4 @@ const QueryInput: FC = () => {
   );
 };
 
-export default QueryInput;
+export default QueryFilter;
