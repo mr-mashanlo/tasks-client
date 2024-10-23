@@ -14,3 +14,12 @@ export const taskPageRoute: RouteObject = {
   },
   loader: taskPageLoader
 };
+
+export const singleTaskPageRoute: RouteObject = {
+  path: '/task/:id',
+  lazy: async () => {
+    const { SingleTaskPage } = await import( './singleTaskPage' );
+    return { Component: SingleTaskPage };
+  },
+  loader: taskPageLoader
+};

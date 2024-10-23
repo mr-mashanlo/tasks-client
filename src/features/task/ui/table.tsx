@@ -19,7 +19,7 @@ const Table: FC = () => {
   return (
     <div className="border border-zinc-800 rounded-md">
       <table className="w-full text-left divide-y divide-zinc-800">
-        <thead className="bg-zinc-900">
+        <thead className="bg-zinc-800">
           <tr className="text-zinc-600">
             <th className="px-5 py-3 font-normal min-w-32 rounded-tl-[0.35rem]">Task</th>
             <th className="px-5 py-3 font-normal w-full">Title</th>

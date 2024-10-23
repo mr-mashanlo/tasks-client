@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { homePageRoute } from '@/pages/home';
-import { taskPageRoute } from '@/pages/task';
+import { singleTaskPageRoute, taskPageRoute } from '@/pages/task';
 import { signInPageRoute, signUpPageRoute } from '@/pages/auth';
 
 const router = createBrowserRouter( [
@@ -12,7 +12,7 @@ const router = createBrowserRouter( [
           const { MainLayout } = await import( '@/app/mainLayout' );
           return { Component: MainLayout };
         },
-        children: [ homePageRoute, taskPageRoute ]
+        children: [ homePageRoute, taskPageRoute, singleTaskPageRoute ]
       },
       {
         lazy: async () => {

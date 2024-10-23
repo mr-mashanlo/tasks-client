@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Dropdown } from '@/shared/ui';
+import { Dropdown, DropdownItem } from '@/shared/ui';
 
 interface Props {
   title: string,
@@ -17,10 +17,11 @@ const HeaderWidget: FC<Props> = ( { title, subtitle } ) => {
         position="bottom"
         button={<button><img className="aspect-square h-8 w-8" alt="@user" src="https://api.dicebear.com/8.x/lorelei/svg?seed=sveltecult" /></button>}
         items={[
-          { type: 'link', label: 'Profile', href: '/profile' },
-          { type: 'link', label: 'Settings', href: '/settings' },
-          { type: 'divider' },
-          { type: 'button', label: 'Logout', onClick: () => { console.log( 'logout' );} } ]}
+          <DropdownItem type="link" to="/profile" label="Profile" />,
+          <DropdownItem type="link" to="/settings" label="Settings" />,
+          <DropdownItem type="divider" />,
+          <DropdownItem type="button" label="Logout" handleClick={() => console.log( 'logout' )} />
+        ]}
       />
     </div>
   );

@@ -1,3 +1,9 @@
-import { taskPageRoute } from './taskPageRoute';
+import {
+  taskPageRoute,
+  singleTaskPageRoute
+} from './taskPageRoute';
 
-export { taskPageRoute };
+export {
+  taskPageRoute,
+  singleTaskPageRoute
+};

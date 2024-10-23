@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { PlusIcon } from '@/shared/ui/icons';
 import { Priority } from '@/entities/task/ui';
 import { useFilterStore } from '../model';
-import { Dropdown } from '@/shared/ui';
+import { Dropdown, DropdownItem } from '@/shared/ui';
 
 const PriorityFilter: FC = () => {
 
@@ -18,11 +18,11 @@ const PriorityFilter: FC = () => {
       position="bottom"
       button={<button className="min-w-[8.2rem] px-3 py-2 inline-flex items-center gap-3 rounded-md border border-dashed border-zinc-800">{priority ? <Priority priority={priority} /> : <><PlusIcon /> <span>Priority</span></>}</button>}
       items={[
-        { type: 'button', label: <Priority priority="low" />, onClick: () => handlePriorityClick( 'low' ) },
-        { type: 'button', label: <Priority priority="medium" />, onClick: () => handlePriorityClick( 'medium' ) },
-        { type: 'button', label: <Priority priority="high" />, onClick: () => handlePriorityClick( 'high' ) },
-        { type: 'divider' },
-        { type: 'button', label: 'Clear', onClick: () => handlePriorityClick( '' ) }
+        <DropdownItem type="button" label={<Priority priority="low" />} handleClick={() => handlePriorityClick( 'low' )} />,
+        <DropdownItem type="button" label={<Priority priority="medium" />} handleClick={() => handlePriorityClick( 'medium' )} />,
+        <DropdownItem type="button" label={<Priority priority="high" />} handleClick={() => handlePriorityClick( 'high' )} />,
+        <DropdownItem type="divider" />,
+        <DropdownItem type="button" label="Clear" handleClick={() => handlePriorityClick( '' )} />
       ]}
     />
   );
