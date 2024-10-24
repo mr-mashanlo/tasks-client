@@ -11,8 +11,7 @@ export const taskPageRoute: RouteObject = {
   lazy: async () => {
     const { TaskPage } = await import( './taskPage' );
     return { Component: TaskPage };
-  },
-  loader: taskPageLoader
+  }
 };
 
 export const singleTaskPageRoute: RouteObject = {
@@ -20,6 +19,24 @@ export const singleTaskPageRoute: RouteObject = {
   lazy: async () => {
     const { SingleTaskPage } = await import( './singleTaskPage' );
     return { Component: SingleTaskPage };
+  },
+  loader: taskPageLoader
+};
+
+export const createTaskPageRoute: RouteObject = {
+  path: '/task/create',
+  lazy: async () => {
+    const { CreateTaskPage } = await import( './createTaskPage' );
+    return { Component: CreateTaskPage };
+  },
+  loader: taskPageLoader
+};
+
+export const updateTaskPageRoute: RouteObject = {
+  path: '/task/:id/update',
+  lazy: async () => {
+    const { UpdateTaskPage } = await import( './updateTaskPage' );
+    return { Component: UpdateTaskPage };
   },
   loader: taskPageLoader
 };

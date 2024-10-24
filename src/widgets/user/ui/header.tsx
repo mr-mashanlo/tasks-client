@@ -17,7 +17,6 @@ const HeaderWidget: FC<Props> = ( { title, subtitle } ) => {
         position="bottom"
         button={<button><img className="aspect-square h-8 w-8" alt="@user" src="https://api.dicebear.com/8.x/lorelei/svg?seed=sveltecult" /></button>}
         items={[
-          <DropdownItem type="link" to="/profile" label="Profile" />,
           <DropdownItem type="link" to="/settings" label="Settings" />,
           <DropdownItem type="divider" />,
           <DropdownItem type="button" label="Logout" handleClick={() => console.log( 'logout' )} />

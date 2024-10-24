@@ -1,10 +1,10 @@
+import { DataTable } from '@/features/task/ui';
 import { FC } from 'react';
-import { Table } from '@/features/task/ui';
 
 const TableWidget: FC = () => {
   return (
     <div>
-      <Table tasks={[]} />
+      <DataTable />
     </div>
   );
 };

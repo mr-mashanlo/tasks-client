@@ -1,18 +1,22 @@
 import { FC } from 'react';
+import { DropdownItem } from '@/shared/ui';
 
 interface Props {
-  id: string
+  id: string,
+  handleClose?: () => void
 }
 
-const Delete: FC<Props> = ( { id } ) => {
+const Delete: FC<Props> = ( { id, handleClose, ...others } ) => {
 
-  const clickHandle = () => {
-    console.log( id );
+  async function handleButtonClick() {
+    try {
+      console.log( id );
+    } catch ( error ) {
+      console.error( error );
+    }
   };
 
-  return (
-    <a onClick={clickHandle} role="button" className="block px-3 py-1 rounded hover:bg-zinc-800">Delete</a>
-  );
+  return <DropdownItem {...others} type="button" label="Delete" handleClick={() => handleButtonClick()} handleClose={handleClose} />;
 };
 
 export default Delete;

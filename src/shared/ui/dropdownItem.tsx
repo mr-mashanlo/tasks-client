@@ -2,17 +2,17 @@ import { ButtonHTMLAttributes, FC, LiHTMLAttributes, ReactNode } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 
 interface BaseType {
-  label?: ReactNode,
   handleClick?: () => void,
   handleClose?: () => void
 }
 
 interface ButtonType extends BaseType, ButtonHTMLAttributes<HTMLButtonElement> {
   type: 'button'
+  label: ReactNode
 }
-
 interface LinkType extends BaseType, LinkProps {
   type: 'link'
+  label: ReactNode
 }
 
 interface DividerType extends BaseType, LiHTMLAttributes<HTMLLIElement> {

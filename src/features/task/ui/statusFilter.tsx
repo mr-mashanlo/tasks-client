@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { PlusIcon } from '@/shared/ui/icons';
 import { Status } from '@/entities/task/ui';
 import { useFilterStore } from '../model';
 import { Dropdown, DropdownItem } from '@/shared/ui';
@@ -16,7 +15,7 @@ const StatusFilter: FC = () => {
   return (
     <Dropdown
       position="bottom"
-      button={<button className="min-w-[8.2rem] px-3 py-2 inline-flex items-center gap-3 rounded-md border border-dashed border-zinc-800">{status ? <Status status={status} /> : <><PlusIcon /> <span>Status</span></>}</button>}
+      button={<button className="min-w-[8.2rem] px-3 py-2 inline-flex items-center gap-3 rounded-md border border-dashed border-zinc-800">{status ? <Status status={status} /> : <Status status="empty" />}</button>}
       items={[
         <DropdownItem type="button" label={<Status status="todo" />} handleClick={() => handleStatusClick( 'todo' )} />,
         <DropdownItem type="button" label={<Status status="inProgress" />} handleClick={() => handleStatusClick( 'inProgress' )} />,

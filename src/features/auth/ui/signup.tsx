@@ -32,10 +32,10 @@ const SignUpForm: FC = () => {
 
   return (
     <form onSubmit={e => handleFormSubmit( e )} className="flex flex-col gap-7">
-      <Input id="email" label={'Email'} varning={error.path === 'email' ? error.msg : ''} type="text" placeholder="one@company.com" required />
-      <Input id="password" label={'Password'} varning={error.path === 'password' ? error.msg : ''} type="password" placeholder="••••••••" required />
-      <Input id="confirm" label={'Confirm password'} varning={error.path === 'confirm' ? error.msg : ''} type="password" placeholder="••••••••" required />
-      <Button>Sign up</Button>
+      <Input display="framed" name="email" label={'Email'} varning={error.path === 'email' ? error.msg : ''} type="text" placeholder="one@company.com" required />
+      <Input display="framed" name="password" label={'Password'} varning={error.path === 'password' ? error.msg : ''} type="password" placeholder="••••••••" required />
+      <Input display="framed" name="confirm" label={'Confirm password'} varning={error.path === 'confirm' ? error.msg : ''} type="password" placeholder="••••••••" required />
+      <Button display="bordered" theme="white">Sign up</Button>
     </form>
   );
 };

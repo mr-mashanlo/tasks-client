@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { BacklogIcon, CancelledIcon, DoneIcon, InProgressIcon, TodoIcon } from '@/shared/ui/icons';
+import { BacklogIcon, CancelledIcon, DoneIcon, InProgressIcon, PlusIcon, TodoIcon } from '@/shared/ui/icons';
 
 interface Props {
-  status: 'todo' | 'inProgress' | 'done' | 'cancelled' | 'backlog'
+  status: 'todo' | 'inProgress' | 'done' | 'cancelled' | 'backlog' | 'empty'
 }
 
 const Status: FC<Props> = ( { status } ) => {
@@ -27,6 +27,10 @@ const Status: FC<Props> = ( { status } ) => {
     backlog: {
       title: 'Backlog',
       icon: <BacklogIcon />
+    },
+    empty: {
+      title: 'Status',
+      icon: <PlusIcon />
     }
   };
 

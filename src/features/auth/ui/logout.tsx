@@ -1,8 +1,13 @@
 import { FC } from 'react';
 import { useAuthStore } from '@/entities/auth/model';
 import { logout } from '@/entities/auth/api';
+import { DropdownItem } from '@/shared/ui';
 
-const Logout: FC = () => {
+interface Props {
+  handleClose: () => void
+}
+
+const Logout: FC<Props> = ( { handleClose, ...others } ) => {
   const setID = useAuthStore( state => state.setID );
 
   async function handleButtonClick() {
@@ -14,9 +19,7 @@ const Logout: FC = () => {
     }
   };
 
-  return (
-    <a onClick={() => handleButtonClick()} role="button" className="block px-3 py-1 rounded hover:bg-zinc-800">Logout</a>
-  );
+  return <DropdownItem {...others} type="button" label="Logout" handleClick={() => handleButtonClick()} handleClose={() => handleClose()} />;
 };
 
 export default Logout;

@@ -9,7 +9,7 @@ const QueryFilter: FC = () => {
 
   return (
     <div className="w-80">
-      <Input onChange={e => setQuery( e.target.value )} value={query} type="text" placeholder="Filter task" />
+      <Input display="bordered" name="query" onChange={e => setQuery( e.target.value )} value={query} type="text" placeholder="Filter task" />
     </div>
   );
 };

@@ -1,9 +1,13 @@
 import {
+  createTaskPageRoute,
   taskPageRoute,
-  singleTaskPageRoute
+  singleTaskPageRoute,
+  updateTaskPageRoute
 } from './taskPageRoute';
 
 export {
+  createTaskPageRoute,
   taskPageRoute,
-  singleTaskPageRoute
+  singleTaskPageRoute,
+  updateTaskPageRoute
 };

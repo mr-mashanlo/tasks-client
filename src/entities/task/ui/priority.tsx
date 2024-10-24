@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { HighIcon, LowIcon, MediumIcon } from '@/shared/ui/icons';
+import { HighIcon, LowIcon, MediumIcon, PlusIcon } from '@/shared/ui/icons';
 
 interface Props {
-  priority: 'low' | 'medium' | 'high'
+  priority: 'low' | 'medium' | 'high' | 'empty'
 }
 
 const Priority: FC<Props> = ( { priority } ) => {
@@ -19,6 +19,10 @@ const Priority: FC<Props> = ( { priority } ) => {
     high: {
       title: 'High',
       icon: <HighIcon />
+    },
+    empty: {
+      title: 'Priority',
+      icon: <PlusIcon />
     }
   };
 
