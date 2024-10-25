@@ -1,26 +1,24 @@
 import { FC } from 'react';
+import { useQuery } from 'react-query';
+import { fetchTasks } from '@/entities/task/api';
 import { Table } from '@/entities/task/ui';
-import { TaskListResponseType } from '@/entities/task/model';
+import { TaskListResponseSchema } from '@/entities/task/model';
 import Options from './options';
 
 const DataTable: FC = () => {
 
-  const tasks: TaskListResponseType = [
-    {
-      __v: 0,
-      _id: '0',
-      user: '0',
-      uid: 'TASK-0000',
-      tag: 'Bug',
-      title: 'You can\'t compress the program without quantifying the open-source SSD pixel!',
-      body: '',
-      status: 'todo',
-      priority: 'low',
-      created: ''
-    }
-  ];
+  const query = useQuery( 'tasks', () => fetchTasks() );
+  const result = TaskListResponseSchema.safeParse( query.data );
 
-  return <Table tasks={tasks} options={Options} />;
+  if ( query.isLoading ) return <p>Loading</p>;
+
+  if ( query.isError ) return <p>Query Error</p>;
+
+  if ( !result.success ) { console.log( result ); return <p>Result Error</p>;};
+
+  if ( !result.data.length ) return <p>Empty</p>;
+
+  return <Table tasks={result.data} options={Options} />;
 };
 
 export default DataTable;

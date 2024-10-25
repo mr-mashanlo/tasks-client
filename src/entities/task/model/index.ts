@@ -1,19 +1,30 @@
 import {
+  PriorityType,
+  StatusType,
   TaskListResponseSchema,
   TaskListResponseType,
   TaskResponseSchema,
   TaskResponseType,
   TaskSchema,
   TaskType
-} from './taskSchema';
+} from './schema';
+
+import {
+  validateTaskListResponse,
+  validateTaskResponse
+} from './validator';
 
 export {
   TaskListResponseSchema,
   TaskResponseSchema,
-  TaskSchema
+  TaskSchema,
+  validateTaskListResponse,
+  validateTaskResponse
 };
 
 export type {
+  PriorityType,
+  StatusType,
   TaskListResponseType,
   TaskResponseType,
   TaskType

@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import { HighIcon, LowIcon, MediumIcon, PlusIcon } from '@/shared/ui/icons';
+import { PriorityType } from '../model';
 
 interface Props {
-  priority: 'low' | 'medium' | 'high' | 'empty'
+  priority: PriorityType | 'empty'
 }
 
 const Priority: FC<Props> = ( { priority } ) => {

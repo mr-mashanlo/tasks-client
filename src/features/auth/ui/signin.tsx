@@ -34,7 +34,7 @@ const SignInForm: FC = () => {
     <form onSubmit={e => handleFormSubmit( e )} className="flex flex-col gap-7">
       <Input display="framed" name="email" label={'Email'} varning={error.path === 'email' ? error.msg : ''} type="text" placeholder="one@company.com" required />
       <Input display="framed" name="password" label={'Password'} varning={error.path === 'password' ? error.msg : ''} type="password" placeholder="••••••••" required />
-      <Button>Sign in</Button>
+      <Button display="bordered" theme="white">Sign in</Button>
     </form>
   );
 };

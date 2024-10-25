@@ -32,18 +32,10 @@ const Textarea: FC<Props> = ( props ) => {
     );
   } else if ( props.display === 'bordered' ) {
     const { name, ...others } = props;
-    return (
-      <div>
-        <textarea {...others} name={name} className="block w-full px-3 py-2 outline-none border border-zinc-800 rounded-md bg-transparent resize-y placeholder:text-zinc-600 focus:border-zinc-500" />
-      </div>
-    );
+    return <textarea {...others} name={name} className="block w-full px-3 py-2 outline-none border border-zinc-800 rounded-md bg-transparent resize-y placeholder:text-zinc-600 focus:border-zinc-500" />;
   } else {
     const { name, ...others } = props;
-    return (
-      <div>
-        <textarea {...others} name={name} className="block w-full outline-none border-none bg-transparent resize-y placeholder:text-zinc-600" />
-      </div>
-    );
+    return <textarea {...others} name={name} className="block w-full outline-none border-none bg-transparent resize-y placeholder:text-zinc-600 appearance-none field-content" />;
   }
 };
 

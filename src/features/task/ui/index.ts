@@ -1,3 +1,4 @@
+import DataForm from './dataForm';
 import DataTable from './dataTable';
 import DataView from './dataView';
 import Delete from './delete';
@@ -8,6 +9,7 @@ import QueryFilter from './queryFilter';
 import StatusFilter from './statusFilter';
 
 export {
+  DataForm,
   DataTable,
   DataView,
   Delete,
