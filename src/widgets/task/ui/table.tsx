@@ -1,5 +1,6 @@
-import { DataTable } from '@/features/task/ui';
 import { FC } from 'react';
+
+import { DataTable } from '@/features/task/ui';
 
 const TableWidget: FC = () => {
   return (

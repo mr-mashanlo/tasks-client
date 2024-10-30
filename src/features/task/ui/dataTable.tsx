@@ -1,13 +1,14 @@
 import { FC } from 'react';
 import { useQuery } from 'react-query';
+
 import { fetchTasks } from '@/entities/task/api';
-import { Table } from '@/entities/task/ui';
 import { TaskListResponseSchema } from '@/entities/task/model';
+import { Table } from '@/entities/task/ui';
+
 import Options from './options';
 
 const DataTable: FC = () => {
-
-  const query = useQuery( 'tasks', () => fetchTasks() );
+  const query = useQuery( { queryKey: [ 'tasks' ], queryFn: fetchTasks } );
   const result = TaskListResponseSchema.safeParse( query.data );
 
   if ( query.isLoading ) return <p>Loading</p>;

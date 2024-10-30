@@ -10,14 +10,12 @@ import {
   SignUpSchema,
   SignUpType
 } from './schema';
-
+import useAuthStore from './store';
 import {
   validateAuthResponse,
   validateSignInFormData,
   validateSignUpFormData
 } from './validator';
-
-import useAuthStore from './store';
 
 export {
   AuthResponseSchema,

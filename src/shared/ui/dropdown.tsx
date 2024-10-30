@@ -1,6 +1,6 @@
 import { cloneElement, FC, ReactElement, useEffect, useRef, useState } from 'react';
-import { twMerge } from 'tailwind-merge';
 import { When } from 'react-if';
+import { twMerge } from 'tailwind-merge';
 
 interface Props {
   positionX: 'left' | 'right',

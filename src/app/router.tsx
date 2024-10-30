@@ -1,7 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { homePageRoute } from '@/pages/home';
-import { singleTaskPageRoute, taskPageRoute, createTaskPageRoute, updateTaskPageRoute } from '@/pages/task';
+
 import { signInPageRoute, signUpPageRoute } from '@/pages/auth';
+import { homePageRoute } from '@/pages/home';
+import { createTaskPageRoute, singleTaskPageRoute, taskPageRoute, updateTaskPageRoute } from '@/pages/task';
 
 const router = createBrowserRouter( [
   {

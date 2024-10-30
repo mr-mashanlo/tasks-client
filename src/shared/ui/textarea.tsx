@@ -1,8 +1,9 @@
-import { FC, TextareaHTMLAttributes } from 'react';
+import { FC, TextareaHTMLAttributes, useEffect, useRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 interface BaseType extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-  name: string
+  name: string,
+  className?: string
 }
 
 interface FramedType extends BaseType {
@@ -22,20 +23,32 @@ interface NakedType extends BaseType {
 type Props = FramedType | BorderedType | NakedType
 
 const Textarea: FC<Props> = ( props ) => {
+  const textareaRef = useRef<HTMLTextAreaElement>( null );
+
+  const handleInput = () => {
+    const textarea = textareaRef.current;
+    if ( textarea ) {
+      textarea.style.height = 'auto';
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
+  };
+
+  useEffect( () => { handleInput(); }, [] );
+
   if ( props.display === 'framed' ) {
-    const { name, label, varning, ...others } = props;
+    const { name, label, varning, className, ...others } = props;
     return (
       <div className="relative">
         <label htmlFor={name} className="px-2 text-xs font-medium bg-[#191919] absolute -top-[0.55rem] left-3 z-10">{varning ? varning : label}</label>
-        <textarea {...others} name={name} className={twMerge( 'block w-full px-3 py-2 outline-none border rounded-md bg-transparent resize-y placeholder:text-zinc-600 focus:border-zinc-500', varning ? 'border-red-300' : 'border-zinc-800' )} />
+        <textarea {...others} ref={textareaRef} onInput={() => handleInput()} name={name} className={twMerge( 'block w-full px-3 py-2 outline-none border rounded-md bg-transparent resize-y placeholder:text-zinc-600 focus:border-zinc-500', varning ? 'border-red-300' : 'border-zinc-800', className )} />
       </div>
     );
   } else if ( props.display === 'bordered' ) {
-    const { name, ...others } = props;
-    return <textarea {...others} name={name} className="block w-full px-3 py-2 outline-none border border-zinc-800 rounded-md bg-transparent resize-y placeholder:text-zinc-600 focus:border-zinc-500" />;
+    const { name, className, ...others } = props;
+    return <textarea {...others} ref={textareaRef} onInput={() => handleInput()} name={name} className={twMerge( 'block w-full px-3 py-2 outline-none border border-zinc-800 rounded-md bg-transparent resize-y placeholder:text-zinc-600 focus:border-zinc-500', className )} />;
   } else {
-    const { name, ...others } = props;
-    return <textarea {...others} name={name} className="block w-full outline-none border-none bg-transparent resize-y placeholder:text-zinc-600 appearance-none field-content" />;
+    const { name, className, ...others } = props;
+    return <textarea {...others} ref={textareaRef} onInput={() => handleInput()} name={name} className={twMerge( 'block w-full outline-none border-none bg-transparent resize-y placeholder:text-zinc-600 appearance-none', className )} />;
   }
 };
 

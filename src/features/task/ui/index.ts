@@ -1,21 +1,21 @@
-import DataForm from './dataForm';
+import CreateForm from './createForm';
 import DataTable from './dataTable';
 import DataView from './dataView';
 import Delete from './delete';
-import Edit from './edit';
 import Options from './options';
 import PriorityFilter from './priorityFilter';
 import QueryFilter from './queryFilter';
 import StatusFilter from './statusFilter';
+import UpdateForm from './updateForm';
 
 export {
-  DataForm,
+  CreateForm,
   DataTable,
   DataView,
   Delete,
-  Edit,
   Options,
   PriorityFilter,
   QueryFilter,
-  StatusFilter
+  StatusFilter,
+  UpdateForm
 };

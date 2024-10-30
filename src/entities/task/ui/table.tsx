@@ -1,5 +1,6 @@
 import { ElementType, FC } from 'react';
 import { Link } from 'react-router-dom';
+
 import { TaskListResponseType, TaskResponseType } from '@/entities/task/model';
 import { Priority, Status, Title } from '@/entities/task/ui';
 
@@ -12,9 +13,9 @@ const Row: FC<RowProps> = ( { task, options: Options } ) => {
   return (
     <tr>
       <td className="px-5 py-3 min-w-32"><Link to={`/task/${task._id}`} className="hover:underline">{task.uid}</Link></td>
-      <td className="px-5 py-3 w-full"><Title id={task._id} tag={task.tag} title={task.title} /></td>
-      <td className="px-5 py-3"><Status status={task.status} /></td>
-      <td className="px-5 py-3"><Priority priority={task.priority} /></td>
+      <td className="px-5 py-3 w-full"><Title id={task._id} tag={task.tag || ''} title={task.title} /></td>
+      <td className="px-5 py-3"><Status value={task.status} /></td>
+      <td className="px-5 py-3"><Priority value={task.priority} /></td>
       <td className="px-5 py-3"><div className="flex items-center justify-center"><Options id={task._id} /></div></td>
     </tr>
   );

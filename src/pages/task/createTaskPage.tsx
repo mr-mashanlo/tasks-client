@@ -1,11 +1,12 @@
 import { FC } from 'react';
-import { DataForm } from '@/features/task/ui';
+
+import { CreateForm } from '@/features/task/ui';
 
 export const CreateTaskPage: FC = () => {
   return (
-    <div className="p-10">
-      <div className="max-w-[46rem] mx-auto">
-        <DataForm />
+    <div className="p-28">
+      <div className="max-w-[50rem] mx-auto">
+        <CreateForm />
       </div>
     </div>
   );

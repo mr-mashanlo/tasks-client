@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { useFilterStore } from '../model';
+
+import { useFilterStore } from '@/entities/task/model';
 import { Input } from '@/shared/ui';
 
 const QueryFilter: FC = () => {

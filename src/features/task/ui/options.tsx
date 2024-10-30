@@ -1,7 +1,9 @@
 import { FC } from 'react';
+
 import { Dropdown, DropdownItem } from '@/shared/ui';
-import Delete from './delete';
 import { OptionsIcon } from '@/shared/ui/icons';
+
+import Delete from './delete';
 
 interface Props {
   id: string

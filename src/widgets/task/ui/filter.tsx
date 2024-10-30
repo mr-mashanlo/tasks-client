@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 import { PriorityFilter, QueryFilter, StatusFilter } from '@/features/task/ui';
 
 const FilterWidget: FC = () => {

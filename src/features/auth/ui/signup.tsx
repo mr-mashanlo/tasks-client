@@ -1,6 +1,7 @@
 import { FC, FormEvent, useState } from 'react';
 import { HTTPError } from 'ky';
 import { ZodError } from 'zod';
+
 import { signup } from '@/entities/auth/api';
 import { ErrorResponseType, ErrorZodType, useAuthStore, validateAuthResponse, validateSignUpFormData } from '@/entities/auth/model';
 import { Button, Input } from '@/shared/ui';

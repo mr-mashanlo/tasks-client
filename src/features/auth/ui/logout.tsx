@@ -1,10 +1,11 @@
 import { FC } from 'react';
-import { useAuthStore } from '@/entities/auth/model';
+
 import { logout } from '@/entities/auth/api';
+import { useAuthStore } from '@/entities/auth/model';
 import { DropdownItem } from '@/shared/ui';
 
 interface Props {
-  handleClose: () => void
+  handleClose?: () => void
 }
 
 const Logout: FC<Props> = ( { handleClose, ...others } ) => {
@@ -19,7 +20,7 @@ const Logout: FC<Props> = ( { handleClose, ...others } ) => {
     }
   };
 
-  return <DropdownItem {...others} type="button" label="Logout" handleClick={() => handleButtonClick()} handleClose={() => handleClose()} />;
+  return <DropdownItem {...others} type="button" label="Logout" handleClick={() => handleButtonClick()} handleClose={handleClose} />;
 };
 
 export default Logout;

@@ -4,6 +4,7 @@ import Dropdown from './dropdown';
 import DropdownItem from './dropdownItem';
 import Header from './header';
 import Input from './input';
+import LinkButton from './linkButton';
 import Table from './table';
 import TableRow from './tableRow';
 import Textarea from './textarea';
@@ -15,6 +16,7 @@ export {
   DropdownItem,
   Header,
   Input,
+  LinkButton,
   Table,
   TableRow,
   Textarea

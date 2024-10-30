@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuthStore } from '@/entities/auth/model';
+
 import { SignInWidget } from '@/widgets/auth/ui';
+import { useAuthStore } from '@/entities/auth/model';
 
 export const SignInPage: FC = () => {
   const id = useAuthStore( state => state.id );

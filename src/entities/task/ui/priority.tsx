@@ -1,12 +1,14 @@
 import { FC } from 'react';
+
 import { HighIcon, LowIcon, MediumIcon, PlusIcon } from '@/shared/ui/icons';
+
 import { PriorityType } from '../model';
 
 interface Props {
-  priority: PriorityType | 'empty'
+  value: PriorityType | 'empty'
 }
 
-const Priority: FC<Props> = ( { priority } ) => {
+const Priority: FC<Props> = ( { value } ) => {
 
   const library = {
     low: {
@@ -29,8 +31,8 @@ const Priority: FC<Props> = ( { priority } ) => {
 
   return (
     <span className="flex items-center gap-3">
-      {library[priority].icon}
-      <span>{library[priority].title}</span>
+      {library[value].icon}
+      <span>{library[value].title}</span>
     </span>
   );
 };

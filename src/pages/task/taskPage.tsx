@@ -1,13 +1,22 @@
-import { FilterWidget } from '@/widgets/task/ui';
 import { FC } from 'react';
+
+import { FilterWidget, TableWidget } from '@/widgets/task/ui';
+import { HeaderWidget } from '@/widgets/user/ui';
+import { LinkButton } from '@/shared/ui';
 
 export const TaskPage: FC = () => {
   return (
     <div className="p-10">
-      <FilterWidget />
-      <p>Cupiditate molestiae voluptates iste, maxime unde ea odio ullam deserunt, ipsum, illo totam ipsam dolores eos ducimus? Nisi, in voluptatibus ex, facere accusantium, omnis architecto mollitia veritatis enim ab dolorem?</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim maiores qui ullam aliquam obcaecati autem hic perspiciatis repellat rerum aperiam inventore sint modi, deserunt, est labore, doloremque explicabo. Vero, animi.</p>
-
+      <div>
+        <HeaderWidget title="Welcome back!" subtitle="Here's a list of your tasks for this month!" />
+      </div>
+      <div className="mt-8 flex items-center justify-between gap-3">
+        <FilterWidget />
+        <LinkButton display="bordered" theme="white" to="/task/create">Create task</LinkButton>
+      </div>
+      <div className="mt-8">
+        <TableWidget />
+      </div>
     </div>
   );
 };

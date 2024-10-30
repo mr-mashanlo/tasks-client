@@ -1,7 +1,7 @@
 import {
   createTaskPageRoute,
-  taskPageRoute,
   singleTaskPageRoute,
+  taskPageRoute,
   updateTaskPageRoute
 } from './taskPageRoute';
 

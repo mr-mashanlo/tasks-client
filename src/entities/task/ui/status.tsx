@@ -1,12 +1,14 @@
 import { FC } from 'react';
+
 import { BacklogIcon, CancelledIcon, DoneIcon, InProgressIcon, PlusIcon, TodoIcon } from '@/shared/ui/icons';
+
 import { StatusType } from '../model';
 
 interface Props {
-  status: StatusType | 'empty'
+  value: StatusType | 'empty'
 }
 
-const Status: FC<Props> = ( { status } ) => {
+const Status: FC<Props> = ( { value } ) => {
 
   const library = {
     todo: {
@@ -37,8 +39,8 @@ const Status: FC<Props> = ( { status } ) => {
 
   return (
     <span className="flex items-center gap-3">
-      {library[status].icon}
-      <span>{library[status].title}</span>
+      {library[value].icon}
+      <span>{library[value].title}</span>
     </span>
   );
 };

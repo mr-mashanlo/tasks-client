@@ -1,22 +1,26 @@
 import { FC, FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { HTTPError } from 'ky';
+import { useMutation, useQueryClient } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import { ZodError } from 'zod';
-import { Form } from '@/entities/task/ui';
-import { validateTaskFormData } from '@/entities/task/model/validator';
-import { createTask } from '@/entities/task/api';
-import { ErrorResponseType, ErrorZodType } from '@/entities/auth/model';
 
-const DataForm: FC = () => {
+import { ErrorResponseType, ErrorZodType } from '@/entities/auth/model';
+import { createTask } from '@/entities/task/api';
+import { validateTaskFormData } from '@/entities/task/model/validator';
+import { Form } from '@/entities/task/ui';
+
+const CreateForm: FC = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const mutation = useMutation( { mutationFn: createTask, onSuccess: () => { queryClient.invalidateQueries( { queryKey: [ 'tasks' ] } ); } } );
 
   async function handleFormSubmit( e: FormEvent<HTMLFormElement> ) {
     e.preventDefault();
     const formData = new FormData( e.currentTarget );
     try {
       const fields = validateTaskFormData( formData );
-      await createTask( fields );
-      navigate( '/' );
+      mutation.mutate( fields );
+      navigate( '/tasks' );
     } catch ( error ) {
       if ( error instanceof HTTPError ) {
         const errorResponse: ErrorResponseType = await error.response.json();
@@ -33,4 +37,4 @@ const DataForm: FC = () => {
   return <Form onSubmit={e => handleFormSubmit( e )} />;
 };
 
-export default DataForm;
+export default CreateForm;

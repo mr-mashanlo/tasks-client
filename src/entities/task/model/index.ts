@@ -8,7 +8,7 @@ import {
   TaskSchema,
   TaskType
 } from './schema';
-
+import useFilterStore from './store';
 import {
   validateTaskListResponse,
   validateTaskResponse
@@ -19,7 +19,8 @@ export {
   TaskResponseSchema,
   TaskSchema,
   validateTaskListResponse,
-  validateTaskResponse
+  validateTaskResponse,
+  useFilterStore
 };
 
 export type {

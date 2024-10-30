@@ -1,4 +1,6 @@
 import { FC } from 'react';
+
+import { Logout } from '@/features/auth/ui';
 import { Dropdown, DropdownItem } from '@/shared/ui';
 
 interface Props {
@@ -20,7 +22,7 @@ const HeaderWidget: FC<Props> = ( { title, subtitle } ) => {
         items={[
           <DropdownItem type="link" to="/settings" label="Settings" />,
           <DropdownItem type="divider" />,
-          <DropdownItem type="button" label="Logout" handleClick={() => console.log( 'logout' )} />
+          <Logout />
         ]}
       />
     </div>

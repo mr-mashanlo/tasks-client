@@ -1,14 +1,14 @@
 import { FC } from 'react';
-import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { View } from '@/entities/task/ui';
-import { TaskResponseSchema } from '@/entities/task/model';
+import { useParams } from 'react-router-dom';
+
 import { fetchTask } from '@/entities/task/api';
+import { TaskResponseSchema } from '@/entities/task/model';
+import { View } from '@/entities/task/ui';
 
 const DataView: FC = () => {
-
-  const { id } = useParams();
-  const query = useQuery( 'task', () => fetchTask( id || '' ) );
+  const { id } = useParams() as { id: string };
+  const query = useQuery( { queryKey: [ 'task', id ], queryFn: () => fetchTask( id ) } );
   const result = TaskResponseSchema.safeParse( query.data );
 
   if ( query.isLoading ) return <p>Loading</p>;

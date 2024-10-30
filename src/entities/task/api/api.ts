@@ -1,4 +1,5 @@
 import { authInstance } from '@/shared/api';
+
 import { TaskType } from '../model';
 
 export async function fetchTasks() {

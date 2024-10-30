@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
+
 import { SignUpForm } from '@/features/auth/ui';
 
 const SignUpWidget: FC = () => {

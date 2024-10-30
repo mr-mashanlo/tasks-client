@@ -1,39 +1,37 @@
 import { FC, FormHTMLAttributes, useState } from 'react';
-import { Dropdown, DropdownItem, Input, Table, TableRow, Textarea } from '@/shared/ui';
+
 import { Priority, Status } from '@/entities/task/ui';
-import { PlusIcon } from '@/shared/ui/icons';
-import { PriorityType, StatusType } from '../model';
+import { Button, Dropdown, DropdownItem, Input, Table, TableRow, Textarea } from '@/shared/ui';
+
+import { PriorityType, StatusType, TaskResponseType } from '../model';
 
 interface Props extends FormHTMLAttributes<HTMLFormElement> {
-  test?: string
+  task?: TaskResponseType
 }
 
-const Form: FC<Props> = ( { ...others } ) => {
-  const [ status, setStatus ] = useState<StatusType>( 'todo' );
-  const [ priority, setPriority ] = useState<PriorityType>( 'low' );
+const Form: FC<Props> = ( { task, ...others } ) => {
+  const [ status, setStatus ] = useState<StatusType>( task?.status || 'todo' );
+  const [ priority, setPriority ] = useState<PriorityType>( task?.priority || 'low' );
 
   return (
     <form {...others} >
-      <div className="relative">
-        <button className="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center absolute top-1/2 -left-20 -translate-y-1/2"><PlusIcon /></button>
-        <div className="text-lg font-medium">
-          <Input display="naked" name="title" type="text" placeholder="You can't compress the program without quantifying the open-source SSD pixel!" />
-        </div>
+      <div>
+        <Textarea defaultValue={task?.title} display="naked" name="title" rows={1} className="min-h-[2.7rem] text-4xl leading-[2.4rem] font-bold" placeholder="Organize team meeting on project goals" required />
       </div>
       <div className="mt-8">
         <Table>
-          <TableRow title="Tag" value={<Input display="naked" name="tag" type="text" placeholder="Bug" />} />
+          <TableRow title="Tag" value={<Input defaultValue={task?.tag} display="naked" name="tag" type="text" placeholder="Bug" />} />
           <TableRow title="Status" value={
             <Dropdown
               positionX="left"
               positionY="bottom"
-              button={<button type="button" className="block">{<Status status={status} />}</button>}
+              button={<button type="button" className="block">{<Status value={status} />}</button>}
               items={[
-                <DropdownItem type="button" label={<Status status="todo" />} handleClick={() => setStatus( 'todo' )} />,
-                <DropdownItem type="button" label={<Status status="inProgress" />} handleClick={() => setStatus( 'inProgress' )} />,
-                <DropdownItem type="button" label={<Status status="done" />} handleClick={() => setStatus( 'done' )} />,
-                <DropdownItem type="button" label={<Status status="cancelled" />} handleClick={() => setStatus( 'cancelled' )} />,
-                <DropdownItem type="button" label={<Status status="backlog" />} handleClick={() => setStatus( 'backlog' )} />
+                <DropdownItem type="button" label={<Status value="todo" />} handleClick={() => setStatus( 'todo' )} />,
+                <DropdownItem type="button" label={<Status value="inProgress" />} handleClick={() => setStatus( 'inProgress' )} />,
+                <DropdownItem type="button" label={<Status value="done" />} handleClick={() => setStatus( 'done' )} />,
+                <DropdownItem type="button" label={<Status value="cancelled" />} handleClick={() => setStatus( 'cancelled' )} />,
+                <DropdownItem type="button" label={<Status value="backlog" />} handleClick={() => setStatus( 'backlog' )} />
               ]}
             />
           } />
@@ -41,22 +39,25 @@ const Form: FC<Props> = ( { ...others } ) => {
             <Dropdown
               positionX="left"
               positionY="bottom"
-              button={<button type="button" className="block">{<Priority priority={priority} />}</button>}
+              button={<button type="button" className="block">{<Priority value={priority} />}</button>}
               items={[
-                <DropdownItem type="button" label={<Priority priority="low" />} handleClick={() => setPriority( 'low' )} />,
-                <DropdownItem type="button" label={<Priority priority="medium" />} handleClick={() => setPriority( 'medium' )} />,
-                <DropdownItem type="button" label={<Priority priority="high" />} handleClick={() => setPriority( 'high' )} />
+                <DropdownItem type="button" label={<Priority value="low" />} handleClick={() => setPriority( 'low' )} />,
+                <DropdownItem type="button" label={<Priority value="medium" />} handleClick={() => setPriority( 'medium' )} />,
+                <DropdownItem type="button" label={<Priority value="high" />} handleClick={() => setPriority( 'high' )} />
               ]}
             />
           } />
         </Table>
       </div>
       <div className="mt-8 prose-sm">
-        <Textarea display="naked" name="body" rows={5} placeholder="Temporibus illo aspernatur odio expedita earum vel rerum ipsum magni, ratione labore ex suscipit, reiciendis voluptatum porro possimus! Laudantium est consectetur possimus tempore minus tempora. Deleniti ipsum odio voluptates veritatis." />
+        <Textarea defaultValue={task?.body} display="naked" name="body" rows={5} placeholder="Arrange a team meeting to discuss upcoming project milestones, assign tasks, and establish a timeline for completion. Prepare an agenda to ensure all team members are aligned on priorities and can address any questions. Follow up with a summary email to document action items and deadlines." />
       </div>
       <div>
-        <input onChange={e => setStatus( e.target.value as StatusType )} value={status} type="text" name="status" hidden={true} />
-        <input onChange={e => setPriority( e.target.value as PriorityType )} value={priority} type="text" name="priority" hidden={true} />
+        <input onChange={e => setStatus( e.target.value as StatusType )} value={status} type="text" name="status" hidden required />
+        <input onChange={e => setPriority( e.target.value as PriorityType )} value={priority} type="text" name="priority" hidden required />
+      </div>
+      <div className="mt-8">
+        <Button display="bordered" theme="white" type="submit">{task ? 'Update task' : 'Create task'}</Button>
       </div>
     </form>
   );
