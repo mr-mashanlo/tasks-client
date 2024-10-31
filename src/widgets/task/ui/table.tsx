@@ -1,11 +1,14 @@
 import { FC } from 'react';
 
-import { DataTable } from '@/features/task/ui';
+import { DataPagination, DataTable } from '@/features/task/ui';
 
 const TableWidget: FC = () => {
   return (
     <div>
       <DataTable />
+      <div className="mt-3">
+        <DataPagination />
+      </div>
     </div>
   );
 };

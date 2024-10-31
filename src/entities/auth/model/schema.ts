@@ -18,7 +18,9 @@ export const AuthResponseSchema = z.object( {
 
 export const ErrorResponseSchema = z.object( {
   code: z.number(),
-  errors: z.array( z.object( { path: z.string(), msg: z.string() } ) )
+  type: z.string(),
+  name: z.string(),
+  message: z.string()
 } );
 
 export const ErrorZodSchema = z.array( z.object( { validation: z.string(), message: z.string() } ) );

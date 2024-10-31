@@ -8,7 +8,7 @@ import { Button, Input } from '@/shared/ui';
 
 const SignInForm: FC = () => {
   const setID = useAuthStore( state => state.setID );
-  const [ error, setError ] = useState( { path: '', msg: '' } );
+  const [ error, setError ] = useState( { name: '', message: '' } );
 
   async function handleFormSubmit( e: FormEvent<HTMLFormElement> ) {
     e.preventDefault();
@@ -21,10 +21,10 @@ const SignInForm: FC = () => {
     } catch ( error ) {
       if ( error instanceof HTTPError ) {
         const errorResponse: ErrorResponseType = await error.response.json();
-        setError( errorResponse.errors[0] );
+        setError( { name: errorResponse.name, message: errorResponse.message } );
       } else if ( error instanceof ZodError ) {
         const errorResponse: ErrorZodType = JSON.parse( error.message );
-        setError( { path: errorResponse[0].validation, msg: errorResponse[0].message } );
+        setError( { name: errorResponse[0].validation, message: errorResponse[0].message } );
       } else {
         console.error( error );
       }
@@ -33,8 +33,8 @@ const SignInForm: FC = () => {
 
   return (
     <form onSubmit={e => handleFormSubmit( e )} className="flex flex-col gap-7">
-      <Input display="framed" name="email" label={'Email'} varning={error.path === 'email' ? error.msg : ''} type="text" placeholder="one@company.com" required />
-      <Input display="framed" name="password" label={'Password'} varning={error.path === 'password' ? error.msg : ''} type="password" placeholder="••••••••" required />
+      <Input display="framed" name="email" label={'Email'} varning={error.name === 'email' ? error.message : ''} type="text" placeholder="one@company.com" required />
+      <Input display="framed" name="password" label={'Password'} varning={error.name === 'password' ? error.message : ''} type="password" placeholder="••••••••" required />
       <Button display="bordered" theme="white">Sign in</Button>
     </form>
   );

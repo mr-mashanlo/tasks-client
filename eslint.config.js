@@ -3,7 +3,6 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
-
 import js from '@eslint/js';
 
 export default tseslint.config(
@@ -90,7 +89,7 @@ export default tseslint.config(
         'error',
         {
           groups: [
-            [ '^react$', '^[a-z]', "^@?\\w" ],
+            [ '^react$', '^[a-z]', '^@?\\w' ],
             [ '^@/pages', '^@/widgets', '^@/features', '^@/entities', '^@/shared', '^@' ],
             [ '^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$' ],
             [ '^.+\\.s?css$' ],

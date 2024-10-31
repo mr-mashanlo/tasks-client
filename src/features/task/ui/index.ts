@@ -1,4 +1,5 @@
 import CreateForm from './createForm';
+import DataPagination from './dataPagination';
 import DataTable from './dataTable';
 import DataView from './dataView';
 import Delete from './delete';
@@ -10,6 +11,7 @@ import UpdateForm from './updateForm';
 
 export {
   CreateForm,
+  DataPagination,
   DataTable,
   DataView,
   Delete,

@@ -7,9 +7,7 @@ import { LinkButton } from '@/shared/ui';
 export const TaskPage: FC = () => {
   return (
     <div className="p-10">
-      <div>
-        <HeaderWidget title="Welcome back!" subtitle="Here's a list of your tasks for this month!" />
-      </div>
+      <HeaderWidget title="Welcome back!" subtitle="Here's a list of your tasks for this month!" />
       <div className="mt-8 flex items-center justify-between gap-3">
         <FilterWidget />
         <LinkButton display="bordered" theme="white" to="/task/create">Create task</LinkButton>
