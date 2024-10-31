@@ -2,8 +2,8 @@ import { authInstance } from '@/shared/api';
 
 import { TaskType } from '../model';
 
-export async function fetchTasks() {
-  const response = await authInstance( 'task/all', { method: 'get', headers: { 'content-type': 'application/json' } } );
+export async function fetchTasks( query?: { limit: number, skip: number } ) {
+  const response = await authInstance( query ? `task/all?limit=${query.limit}&skip=${query.skip}` : 'task/all', { method: 'get', headers: { 'content-type': 'application/json' } } );
   return await response.json();
 };
 

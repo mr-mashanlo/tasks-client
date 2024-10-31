@@ -20,7 +20,14 @@ export const TaskResponseSchema = TaskSchema.extend( {
   created: z.string()
 } );
 
-export const TaskListResponseSchema = z.array( TaskResponseSchema );
+export const TasksResponseSchema = z.array( TaskResponseSchema );
+
+export const TasksDataResponseSchema = z.object( {
+  data: TasksResponseSchema,
+  count: z.number(),
+  limit: z.number().optional(),
+  skip: z.number().optional()
+} );
 
 export type StatusType = z.infer<typeof StatusSchema>;
 
@@ -30,4 +37,6 @@ export type TaskType = z.infer<typeof TaskSchema>;
 
 export type TaskResponseType = z.infer<typeof TaskResponseSchema>;
 
-export type TaskListResponseType = z.infer<typeof TaskListResponseSchema>;
+export type TasksResponseType = z.infer<typeof TasksResponseSchema>;
+
+export type TasksDataResponseType = z.infer<typeof TasksDataResponseSchema>;

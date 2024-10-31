@@ -4,14 +4,16 @@ import { useFilterStore } from '@/entities/task/model';
 import { Pagination } from '@/shared/ui';
 
 const DataPagination: FC = () => {
-  const curentPage = useFilterStore( state => state.curentPage );
-  const setCurentPage = useFilterStore( state => state.setCurentPage );
-  const increaseCurentPage = useFilterStore( state => state.increaseCurentPage );
-  const decreaseCurentPage = useFilterStore( state => state.decreaseCurentPage );
+  const count = useFilterStore( state => state.count );
+  const limit = useFilterStore( state => state.limit );
+  const skip = useFilterStore( state => state.skip );
+  const setSkip = useFilterStore( state => state.setSkip );
+  const increaseSkip = useFilterStore( state => state.increaseSkip );
+  const decreaseSkip = useFilterStore( state => state.decreaseSkip );
 
   return (
     <div className="flex justify-end">
-      <Pagination curentPage={curentPage} onStart={() => setCurentPage( 1 )} onPrev={() => decreaseCurentPage()} onNext={() => increaseCurentPage()} onEnd={() => {}} />
+      <Pagination curent={skip + 1} total={Math.ceil( count / limit )} onStart={() => setSkip( 1 )} onPrev={() => decreaseSkip()} onNext={() => increaseSkip()} onEnd={() => setSkip( Math.ceil( count / limit ) )} />
     </div>
   );
 };

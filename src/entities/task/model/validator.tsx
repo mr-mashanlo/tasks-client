@@ -1,4 +1,4 @@
-import { TaskListResponseSchema, TaskResponseSchema, TaskSchema } from './schema';
+import { TaskResponseSchema, TaskSchema, TasksDataResponseSchema } from './schema';
 
 export function validateTaskFormData( formData: FormData ) {
   const fields = Object.fromEntries( formData.entries() );
@@ -9,8 +9,8 @@ export function validateTaskFormData( formData: FormData ) {
   return result.data;
 };
 
-export function validateTaskListResponse( responseData: unknown ) {
-  const result = TaskListResponseSchema.safeParse( responseData );
+export function validateTasksDataResponse( responseData: unknown ) {
+  const result = TasksDataResponseSchema.safeParse( responseData );
   if ( !result.success ) {
     throw result.error;
   }

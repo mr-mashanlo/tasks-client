@@ -1,7 +1,7 @@
 import { ElementType, FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import { TaskListResponseType, TaskResponseType } from '@/entities/task/model';
+import { TaskResponseType, TasksResponseType } from '@/entities/task/model';
 import { Priority, Status, Title } from '@/entities/task/ui';
 
 interface RowProps {
@@ -22,7 +22,7 @@ const Row: FC<RowProps> = ( { task, options: Options } ) => {
 };
 
 interface TableProps {
-  tasks: TaskListResponseType,
+  tasks: TasksResponseType,
   options: ElementType
 }
 

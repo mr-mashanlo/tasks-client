@@ -1,24 +1,26 @@
 import {
   PriorityType,
   StatusType,
-  TaskListResponseSchema,
-  TaskListResponseType,
   TaskResponseSchema,
   TaskResponseType,
   TaskSchema,
+  TasksDataResponseSchema,
+  TasksDataResponseType,
+  TasksResponseSchema,
+  TasksResponseType,
   TaskType
 } from './schema';
 import useFilterStore from './store';
 import {
-  validateTaskListResponse,
-  validateTaskResponse
-} from './validator';
+  validateTaskResponse,
+  validateTasksDataResponse } from './validator';
 
 export {
-  TaskListResponseSchema,
+  TasksDataResponseSchema,
+  TasksResponseSchema,
   TaskResponseSchema,
   TaskSchema,
-  validateTaskListResponse,
+  validateTasksDataResponse,
   validateTaskResponse,
   useFilterStore
 };
@@ -26,7 +28,8 @@ export {
 export type {
   PriorityType,
   StatusType,
-  TaskListResponseType,
+  TasksDataResponseType,
+  TasksResponseType,
   TaskResponseType,
   TaskType
 };
