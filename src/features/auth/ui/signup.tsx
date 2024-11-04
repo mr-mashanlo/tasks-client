@@ -1,5 +1,6 @@
 import { FC, FormEvent, useState } from 'react';
 import { HTTPError } from 'ky';
+import { useNavigate } from 'react-router-dom';
 import { ZodError } from 'zod';
 
 import { signup } from '@/entities/auth/api';
@@ -7,6 +8,7 @@ import { ErrorResponseType, ErrorZodType, useAuthStore, validateAuthResponse, va
 import { Button, Input } from '@/shared/ui';
 
 const SignUpForm: FC = () => {
+  const navigate = useNavigate();
   const setID = useAuthStore( state => state.setID );
   const [ error, setError ] = useState( { name: '', message: '' } );
 
@@ -18,6 +20,7 @@ const SignUpForm: FC = () => {
       const response = await signup( fields.email, fields.password, fields.confirm );
       const result = validateAuthResponse( response );
       setID( result.id );
+      navigate( '/tasks' );
     } catch ( error ) {
       if ( error instanceof HTTPError ) {
         const errorResponse: ErrorResponseType = await error.response.json();
