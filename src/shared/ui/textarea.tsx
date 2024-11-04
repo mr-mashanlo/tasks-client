@@ -40,15 +40,15 @@ const Textarea: FC<Props> = ( props ) => {
     return (
       <div className="relative">
         <label htmlFor={name} className="px-2 text-xs font-medium bg-[#191919] absolute -top-[0.55rem] left-3 z-10">{varning ? varning : label}</label>
-        <textarea {...others} ref={textareaRef} onInput={() => handleInput()} name={name} className={twMerge( 'block w-full px-3 py-2 outline-none border rounded-md bg-transparent resize-y placeholder:text-zinc-600 focus:border-zinc-500', varning ? 'border-red-300' : 'border-zinc-800', className )} />
+        <textarea {...others} ref={textareaRef} onInput={() => handleInput()} name={name} className={twMerge( 'block w-full px-3 py-2 outline-none border rounded-md bg-transparent resize-y overflow-hidden placeholder:text-zinc-600 focus:border-zinc-500', varning ? 'border-red-300' : 'border-zinc-800', className )} />
       </div>
     );
   } else if ( props.display === 'bordered' ) {
     const { name, className, ...others } = props;
-    return <textarea {...others} ref={textareaRef} onInput={() => handleInput()} name={name} className={twMerge( 'block w-full px-3 py-2 outline-none border border-zinc-800 rounded-md bg-transparent resize-y placeholder:text-zinc-600 focus:border-zinc-500', className )} />;
+    return <textarea {...others} ref={textareaRef} onInput={() => handleInput()} name={name} className={twMerge( 'block w-full px-3 py-2 outline-none border border-zinc-800 rounded-md bg-transparent resize-y overflow-hidden placeholder:text-zinc-600 focus:border-zinc-500', className )} />;
   } else {
     const { name, className, ...others } = props;
-    return <textarea {...others} ref={textareaRef} onInput={() => handleInput()} name={name} className={twMerge( 'block w-full outline-none border-none bg-transparent resize-y placeholder:text-zinc-600 appearance-none', className )} />;
+    return <textarea {...others} ref={textareaRef} onInput={() => handleInput()} name={name} className={twMerge( 'block w-full outline-none border-none bg-transparent resize-y overflow-hidden placeholder:text-zinc-600 appearance-none', className )} />;
   }
 };
 

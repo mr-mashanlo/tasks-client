@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useQuery } from 'react-query';
 
 import { fetchTasks } from '@/entities/task/api';
@@ -14,6 +14,8 @@ const DataTable: FC = () => {
   const query = useQuery( { queryKey: [ 'tasks', skip ], queryFn: () => fetchTasks( { limit, skip } ) } );
   const result = TasksDataResponseSchema.safeParse( query.data );
 
+  useEffect( () => { setCount( result.data?.count || 0 ); }, [ setCount, result.data?.count ] );
+
   if ( query.isLoading ) return <p>Loading</p>;
 
   if ( query.isError ) return <p>Query Error</p>;
@@ -21,8 +23,6 @@ const DataTable: FC = () => {
   if ( !result.success ) return <p>Result Error</p>;
 
   if ( !result.data.count ) return <p>Empty</p>;
-
-  setCount( result.data.count );
 
   return <Table tasks={result.data.data} options={Options} />;
 };

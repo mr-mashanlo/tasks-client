@@ -13,7 +13,14 @@ const DataPagination: FC = () => {
 
   return (
     <div className="flex justify-end">
-      <Pagination curent={skip + 1} total={Math.ceil( count / limit )} onStart={() => setSkip( 1 )} onPrev={() => decreaseSkip()} onNext={() => increaseSkip()} onEnd={() => setSkip( Math.ceil( count / limit ) )} />
+      <Pagination
+        curent={skip / limit + 1}
+        total={Math.ceil( count / limit )}
+        onStart={() => setSkip( 0 )}
+        onPrev={() => decreaseSkip()}
+        onNext={() => increaseSkip()}
+        onEnd={() => setSkip( Math.ceil( count - count % limit ) )}
+      />
     </div>
   );
 };

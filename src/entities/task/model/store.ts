@@ -20,7 +20,7 @@ interface IFilterStore {
 }
 
 const useFilterStore = create( persist<IFilterStore>( set => ( {
-  limit: 6,
+  limit: 10,
   skip: 0,
   count: 0,
   query: '',
@@ -29,8 +29,8 @@ const useFilterStore = create( persist<IFilterStore>( set => ( {
 
   setLimit( limit ) { return set( () => ( { limit } ) ); },
   setSkip( skip ) { return set( () => ( { skip } ) ); },
-  increaseSkip() { return set( state => ( { skip: state.skip > Math.ceil( state.count / state.limit ) ? state.skip + 1 : Math.ceil( state.count / state.limit ) } ) ); },
-  decreaseSkip() { return set( state => ( { skip: state.skip > 1 ? state.skip - 1 : 1 } ) ); },
+  increaseSkip() { return set( state => ( { skip: Math.min( state.skip + state.limit, state.count - state.count % state.limit ) } ) ); },
+  decreaseSkip() { return set( state => ( { skip: Math.max( state.skip - state.limit, 0 ) } ) ); },
   setCount( count ) { return set( () => ( { count } ) ); },
   setQuery( query ) { return set( () => ( { query } ) ); },
   setStatus( status ) { return set( () => ( { status } ) ); },

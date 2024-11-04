@@ -16,11 +16,11 @@ const Form: FC<Props> = ( { task, ...others } ) => {
   return (
     <form {...others} >
       <div>
-        <Textarea defaultValue={task?.title} display="naked" name="title" rows={1} className="min-h-[2.7rem] text-4xl leading-[2.4rem] font-bold" placeholder="Organize team meeting on project goals" required />
+        <Textarea defaultValue={task?.title} display="naked" name="title" rows={1} className="text-4xl font-bold" placeholder="Organize team meeting on project goals" required />
       </div>
       <div className="mt-8">
         <Table>
-          <TableRow title="Tag" value={<Input defaultValue={task?.tag} display="naked" name="tag" type="text" placeholder="Bug" />} />
+          <TableRow title="Tag" value={<Input defaultValue={task?.tag} display="naked" name="tag" type="text" className="w-auto" placeholder="Bug" />} />
           <TableRow title="Status" value={
             <Dropdown
               positionX="left"
