@@ -20,7 +20,7 @@ interface IFilterStore {
 }
 
 const useFilterStore = create( persist<IFilterStore>( set => ( {
-  limit: 10,
+  limit: 30,
   skip: 0,
   count: 0,
   query: '',
