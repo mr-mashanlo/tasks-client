@@ -24,7 +24,7 @@ const UpdateForm: FC = () => {
     try {
       const fields = validateTaskFormData( formData );
       mutation.mutate( fields );
-      navigate( '/tasks' );
+      navigate( -1 );
     } catch ( error ) {
       if ( error instanceof HTTPError ) {
         const errorResponse: ErrorResponseType = await error.response.json();

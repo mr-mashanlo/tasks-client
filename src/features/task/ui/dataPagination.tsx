@@ -11,6 +11,8 @@ const DataPagination: FC = () => {
   const increaseSkip = useFilterStore( state => state.increaseSkip );
   const decreaseSkip = useFilterStore( state => state.decreaseSkip );
 
+  if ( count <= limit ) return;
+
   return (
     <div className="flex justify-end">
       <Pagination

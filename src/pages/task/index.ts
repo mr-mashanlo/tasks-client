@@ -7,7 +7,7 @@ import {
 
 export {
   createTaskPageRoute,
-  taskPageRoute,
   singleTaskPageRoute,
+  taskPageRoute,
   updateTaskPageRoute
 };
