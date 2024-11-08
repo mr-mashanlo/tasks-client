@@ -5,11 +5,12 @@ import { Status } from '@/entities/task/ui';
 import { Dropdown, DropdownItem } from '@/shared/ui';
 
 const StatusFilter: FC = () => {
-
   const status = useFilterStore( state => state.status );
+  const setSkip = useFilterStore( state => state.setSkip );
   const setStatus = useFilterStore( state => state.setStatus );
 
   const handleStatusClick = ( status: StatusType | '' ) => {
+    setSkip( 0 );
     setStatus( status );
   };
 

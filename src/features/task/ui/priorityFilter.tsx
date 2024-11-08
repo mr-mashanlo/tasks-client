@@ -5,11 +5,12 @@ import { Priority } from '@/entities/task/ui';
 import { Dropdown, DropdownItem } from '@/shared/ui';
 
 const PriorityFilter: FC = () => {
-
   const priority = useFilterStore( state => state.priority );
+  const setSkip = useFilterStore( state => state.setSkip );
   const setPriority = useFilterStore( state => state.setPriority );
 
   const handlePriorityClick = ( priority: PriorityType | '' ) => {
+    setSkip( 0 );
     setPriority( priority );
   };
 

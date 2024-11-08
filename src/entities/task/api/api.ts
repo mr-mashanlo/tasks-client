@@ -2,8 +2,14 @@ import { authInstance } from '@/shared/api';
 
 import { TaskType } from '../model';
 
-export async function fetchTasks( query?: { limit: number, skip: number } ) {
-  const response = await authInstance( query ? `task/all?limit=${query.limit}&skip=${query.skip}` : 'task/all', { method: 'get', headers: { 'content-type': 'application/json' } } );
+export async function fetchTasks( params: { limit: number, skip: number, query?: string, status?: string, priority?: string } ) {
+  const url = new URL( 'http://test.com' );
+  url.searchParams.set( 'limit', String( params.limit ) );
+  url.searchParams.set( 'skip', String( params.skip ) );
+  if ( params.query ) url.searchParams.set( 'query', String( params.query ) );
+  if ( params.status ) url.searchParams.set( 'status', String( params.status ) );
+  if ( params.priority ) url.searchParams.set( 'priority', String( params.priority ) );
+  const response = await authInstance( `task/all${url.search}`, { method: 'get', headers: { 'content-type': 'application/json' } } );
   return await response.json();
 };
 

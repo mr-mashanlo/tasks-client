@@ -10,8 +10,11 @@ import Options from './options';
 const DataTable: FC = () => {
   const limit = useFilterStore( state => state.limit );
   const skip = useFilterStore( state => state.skip );
+  const search = useFilterStore( state => state.query );
+  const status = useFilterStore( state => state.status );
+  const priority = useFilterStore( state => state.priority );
   const setCount = useFilterStore( state => state.setCount );
-  const query = useQuery( { queryKey: [ 'tasks', skip ], queryFn: () => fetchTasks( { limit, skip } ) } );
+  const query = useQuery( { queryKey: [ 'tasks', skip, search, status, priority ], queryFn: () => fetchTasks( { limit, skip, query: search, status, priority } ) } );
   const result = TasksDataResponseSchema.safeParse( query.data );
 
   useEffect( () => { setCount( result.data?.count || 0 ); }, [ setCount, result.data?.count ] );

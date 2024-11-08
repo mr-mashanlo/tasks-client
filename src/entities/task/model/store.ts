@@ -16,11 +16,12 @@ interface IFilterStore {
   setCount: ( count: number ) => void,
   setQuery: ( query: string ) => void,
   setStatus: ( status: 'todo' | 'inProgress' | 'done' | 'cancelled' | 'backlog' | '' ) => void,
-  setPriority: ( priority: 'low' | 'medium' | 'high' | '' ) => void
+  setPriority: ( priority: 'low' | 'medium' | 'high' | '' ) => void,
+  reset: () => void
 }
 
 const useFilterStore = create( persist<IFilterStore>( set => ( {
-  limit: 30,
+  limit: 8,
   skip: 0,
   count: 0,
   query: '',
@@ -34,7 +35,8 @@ const useFilterStore = create( persist<IFilterStore>( set => ( {
   setCount( count ) { return set( () => ( { count } ) ); },
   setQuery( query ) { return set( () => ( { query } ) ); },
   setStatus( status ) { return set( () => ( { status } ) ); },
-  setPriority( priority ) { return set( () => ( { priority } ) ); }
+  setPriority( priority ) { return set( () => ( { priority } ) ); },
+  reset() { return set( () => ( { limit: 8, skip: 0, count: 0, query: '', status: '', priority: '' } ) ); }
 } ), { name: 'filter' } ) );
 
 export default useFilterStore;
